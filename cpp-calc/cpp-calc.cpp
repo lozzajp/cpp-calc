@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 
+#include "Calculator.h"
+
 int main()
 {
     std::cout << "Hello Calculator\n\n" << "Please select an operation\n\n"; 
@@ -23,5 +25,6 @@ int main()
 	std::cin >> rhsNumber;
 	std::cout << "\n";
 
-	std::cout << "Addition Result: " << lhsNumber + rhsNumber;
+	Calculator calculator;
+	std::cout << "Addition Result: " << calculator.Add(lhsNumber, rhsNumber);
 }
