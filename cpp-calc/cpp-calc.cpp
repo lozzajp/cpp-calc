@@ -5,7 +5,6 @@
 #include "Calculator.h"
 #include "Controller.h"
 #include "TestHarness.cpp"
-#include "cpp-calc.h"
 
 int main()
 {
