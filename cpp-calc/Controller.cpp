@@ -14,6 +14,12 @@ void Controller::Run()
 	GatherInput();
 
 	Execute();
+
+	char shouldContinue;
+	std::cout << "Continue?\n" << "Y/N: ";
+	std::cin >> shouldContinue;
+	ShouldContinue = (shouldContinue == 'Y' || shouldContinue == 'y');
+	std::cin.clear();
 }
 
 void Controller::GatherInput()
@@ -27,6 +33,8 @@ void Controller::GatherInput()
 	std::getline(std::cin, selection);
 	std::cout << "\n";
 
+	OperationToUse = ParseOperation(selection);
+
 	std::cout << "Please enter the LHS number: ";
 	std::cin >> LhsNumber;
 	std::cout << "\n";
@@ -34,20 +42,12 @@ void Controller::GatherInput()
 	std::cout << "Please enter the RHS number: ";
 	std::cin >> RhsNumber;
 	std::cout << "\n";
-
-	Calculator calculator;
-	std::cout << "Addition Result: " << calculator.Add(LhsNumber, RhsNumber) << "\n";
-
-	char shouldContinue;
-	std::cout << "Continue?\n" << "Y/N: ";
-	std::cin >> shouldContinue;
-	ShouldContinue = (shouldContinue == 'Y' || shouldContinue == 'y');
-	std::cin.clear();
 }
 
 void Controller::Execute()
 {
-
+	Calculator calculator;
+	std::cout << "Addition Result: " << calculator.Add(LhsNumber, RhsNumber) << "\n";
 }
 
 Controller::Operation Controller::ParseOperation(std::string operation)
