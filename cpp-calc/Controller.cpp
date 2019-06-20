@@ -47,10 +47,52 @@ void Controller::GatherInput()
 void Controller::Execute()
 {
 	Calculator calculator;
-	std::cout << "Addition Result: " << calculator.Add(LhsNumber, RhsNumber) << "\n";
+
+	switch (OperationToUse)
+	{
+		case Operation::Addition:
+		{
+			std::cout << "Addition Result: " << calculator.Add(LhsNumber, RhsNumber) << "\n";
+			break;
+		}
+		case Operation::Subtraction:
+		{
+			std::cout << "Subtraction Result: " << calculator.Subtract(LhsNumber, RhsNumber) << "\n";
+			break;
+		}
+		case Operation::Multiplication:
+		{
+			std::cout << "Multiplication Result: " << calculator.Multiply(LhsNumber, RhsNumber) << "\n";
+			break;
+		}
+		case Operation::Division:
+		{
+			std::cout << "Division Result: " << calculator.Divide(LhsNumber, RhsNumber) << "\n";
+			break;
+		}
+		default:
+			break;
+	}
 }
 
 Controller::Operation Controller::ParseOperation(std::string operation)
 {
+	if (operation == "1")
+	{
+		return Operation::Addition;
+	}
+	else if (operation == "2")
+	{
+		return Operation::Subtraction;
+	}
+	else if (operation == "3")
+	{
+		return Operation::Multiplication;
+	}
+	else if (operation == "4")
+	{
+		return Operation::Division;
+	}
+
 	return Operation::Addition;
 }

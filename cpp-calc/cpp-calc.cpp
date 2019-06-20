@@ -11,7 +11,7 @@ int main()
 	int tests = RunAllTest();
 	if (tests != 0)
 	{
-		std::cout << tests;
+		std::cout << "Exit from tests: " << tests;
 		return tests;
 	}
 
