@@ -20,6 +20,6 @@ int main()
 	Controller controller;
 	while (controller.Continue())
 	{
-		controller.GatherInput();
+		controller.Run();
 	}
 }

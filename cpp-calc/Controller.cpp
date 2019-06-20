@@ -3,11 +3,17 @@
 
 #include "Calculator.h"
 #include <iostream>
-#include <string>
 
 bool Controller::Continue()
 {
 	return ShouldContinue;
+}
+
+void Controller::Run()
+{
+	GatherInput();
+
+	Execute();
 }
 
 void Controller::GatherInput()
@@ -22,21 +28,29 @@ void Controller::GatherInput()
 	std::cout << "\n";
 
 	std::cout << "Please enter the LHS number: ";
-	float lhsNumber;
-	std::cin >> lhsNumber;
+	std::cin >> LhsNumber;
 	std::cout << "\n";
 
 	std::cout << "Please enter the RHS number: ";
-	float rhsNumber;
-	std::cin >> rhsNumber;
+	std::cin >> RhsNumber;
 	std::cout << "\n";
 
 	Calculator calculator;
-	std::cout << "Addition Result: " << calculator.Add(lhsNumber, rhsNumber) << "\n";
+	std::cout << "Addition Result: " << calculator.Add(LhsNumber, RhsNumber) << "\n";
 
 	char shouldContinue;
 	std::cout << "Continue?\n" << "Y/N: ";
 	std::cin >> shouldContinue;
 	ShouldContinue = (shouldContinue == 'Y' || shouldContinue == 'y');
 	std::cin.clear();
+}
+
+void Controller::Execute()
+{
+
+}
+
+Controller::Operation Controller::ParseOperation(std::string operation)
+{
+	return Operation::Addition;
 }
